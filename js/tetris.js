@@ -37,6 +37,7 @@ function init() { // 화면(script)가 처음 호출이 될 때
     };
     // renderBlocks();
     generateNewBlock();
+    score = 0;
 };
 
 function prependNewLine() {
@@ -123,9 +124,9 @@ function checkMatch() {
 
 function generateNewBlock() { // 새로운 블럭 생성
     clearInterval(downInterval);
-    downInterval = setInterval(() => {
-        moveBlock("top", 1); // 위로 가는 모양을 1씩 증가
-    }, duration);
+    // downInterval = setInterval(() => {
+    //     moveBlock("top", 1); // 위로 가는 모양을 1씩 증가
+    // }, duration);
 
     const blockArray = Object.entries(BLOCKS);
     const randomIndex = Math.floor(Math.random() * blockArray.length);
@@ -194,5 +195,6 @@ document.addEventListener("keydown", e => {
 restartButton.addEventListener("click", () => {
     playground.innerHTML = "";
     gameText.style.display = "none";
+    scoreDisplay.innerText = 0;
     init();
 });
